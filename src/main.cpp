@@ -1,6 +1,7 @@
 #include <glad/glad.h>
 #define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
+#include <glm/glm.hpp>
 #include <openglDebug.h>
 #include <demoShaderLoader.h>
 #include <iostream>
@@ -20,8 +21,11 @@ static void key_callback(GLFWwindow *window, int key, int scancode, int action, 
 		glfwSetWindowShouldClose(window, GLFW_TRUE);
 }
 
-int main(void)
+int main()
 {
+
+
+
 
 	if (!glfwInit())
 		return -1;
@@ -48,7 +52,7 @@ int main(void)
 	glfwSetKeyCallback(window, key_callback);
 
 	glfwMakeContextCurrent(window);
-	gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+	gladLoadGL();
 	glfwSwapInterval(1);
 
 
@@ -86,10 +90,5 @@ int main(void)
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
-
-	//there is no need to call the clear function for the libraries since the os will do that for us.
-	//by calling this functions we are just wasting time.
-	//glfwDestroyWindow(window);
-	//glfwTerminate();
 	return 0;
 }
